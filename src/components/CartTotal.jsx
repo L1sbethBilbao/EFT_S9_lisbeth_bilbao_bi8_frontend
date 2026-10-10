@@ -10,7 +10,7 @@ import { formatearPrecio } from '../utils/formato.js'
 
 export default function CartTotal({ items }) {
   return (
-    <p className="total-carrito d-flex justify-content-between mb-0">
+    <p className="total-carrito mb-0">
       <span>Total:</span>
       <strong>{formatearPrecio(calcularTotal(items))}</strong>
     </p>

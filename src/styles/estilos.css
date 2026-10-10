@@ -316,11 +316,33 @@ a:hover {
   font-size: 0.85rem;
 }
 
+/* Flexbox: la miniatura y la información del juego quedan una al lado de la otra */
 .item-carrito {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   background-color: var(--color-fondo);
   border: 1px solid var(--color-borde);
   border-radius: 8px;
   padding: 0.5rem;
+}
+
+/* La información ocupa todo el espacio que deja la miniatura */
+.info-item {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Flexbox: botones − y +, cantidad y botón Quitar en una misma fila */
+.controles-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* margin-left: auto empuja el botón Quitar al extremo derecho */
+.controles-item .btn-quitar {
+  margin-left: auto;
 }
 
 .item-carrito p {
@@ -356,7 +378,10 @@ a:hover {
   color: #4ade80;
 }
 
+/* Flexbox: "Total:" a la izquierda y el monto a la derecha */
 .content-box .total-carrito {
+  display: flex;
+  justify-content: space-between;
   color: var(--color-acento);
   font-size: 1.2rem;
   font-weight: bold;
