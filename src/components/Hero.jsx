@@ -18,14 +18,22 @@ export default function Hero({ destacados }) {
   // useEffect con [destacados.length]: inicia el carrusel al montar y lo reinicia
   // cuando llegan los juegos destacados del catálogo (avance cada 3 segundos).
   useEffect(() => {
-    const carrusel = Carousel.getOrCreateInstance(refCarrusel.current, {
+    const elemento = refCarrusel.current
+    const carrusel = Carousel.getOrCreateInstance(elemento, {
       interval: 3000,
       ride: 'carousel',
     })
     carrusel.cycle()
     // Cleanup: al desmontar (por ejemplo al ir a Contacto) o antes de reiniciar,
     // se libera el carrusel para no dejar temporizadores activos.
-    return () => carrusel.dispose()
+    return () => {
+      // Si una imagen está a mitad del cambio, la transición se termina ahora:
+      // Bootstrap la completaría después del dispose() y fallaría con "Illegal invocation".
+      elemento.querySelector('.carousel-item.active')?.dispatchEvent(new Event('transitionend'))
+      // dispose() no detiene el avance automático; pause() sí lo hace.
+      carrusel.pause()
+      carrusel.dispose()
+    }
   }, [destacados.length])
 
   return (
