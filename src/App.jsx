@@ -17,6 +17,7 @@ import InicioPage from './pages/InicioPage.jsx'
 import CarritoPage from './pages/CarritoPage.jsx'
 import ContactoPage from './pages/ContactoPage.jsx'
 import NoEncontradaPage from './pages/NoEncontradaPage.jsx'
+import AdministrarPage from './pages/AdministrarPage.jsx'
 
 // Clave propia de la EFT: los sitios de las semanas 7 y 8 viven en el mismo dominio
 // (l1sbethbilbao.github.io) y no deben compartir el carrito guardado.
@@ -36,8 +37,18 @@ function leerCarritoGuardado() {
 }
 
 export default function App() {
-  // Catálogo cargado desde public/data/productos.json (ver hooks/useProductos.js).
-  const { productos, categorias, estado, error, reintentar } = useProductos()
+  // Catálogo cargado desde public/data/productos.json (ver hooks/useProductos.js),
+  // con las funciones para agregar juegos y volver al catálogo original.
+  const {
+    productos,
+    categorias,
+    estado,
+    error,
+    reintentar,
+    agregarJuego,
+    restaurarCatalogo,
+    hayCambios,
+  } = useProductos()
 
   // Estado del carrito: cada ítem es { ...juego, cantidad }.
   // Se pasa una función a useState (lazy initialization) para leer localStorage solo una vez.
@@ -153,6 +164,21 @@ export default function App() {
           }
         />
         <Route path="/carrito" element={<CarritoPage carrito={carrito} accionesCarrito={accionesCarrito} />} />
+        <Route
+          path="/administrar"
+          element={
+            <AdministrarPage
+              estado={estado}
+              error={error}
+              onReintentar={reintentar}
+              productos={productos}
+              categorias={categorias}
+              onAgregarJuego={agregarJuego}
+              hayCambios={hayCambios}
+              onRestaurar={restaurarCatalogo}
+            />
+          }
+        />
         <Route path="/contacto" element={<ContactoPage />} />
         <Route path="*" element={<NoEncontradaPage />} />
       </Routes>

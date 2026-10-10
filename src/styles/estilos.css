@@ -415,6 +415,24 @@ a:hover {
   object-fit: cover;
 }
 
+/* --- Administrar: lista de juegos del catálogo --- */
+.lista-admin .list-group-item {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  border-color: var(--color-borde);
+}
+
+.lista-admin .nombre-admin {
+  color: var(--color-texto);
+}
+
+.miniatura-admin {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
 /* --- Footer --- */
 .site-footer {
   background-color: var(--color-nav);

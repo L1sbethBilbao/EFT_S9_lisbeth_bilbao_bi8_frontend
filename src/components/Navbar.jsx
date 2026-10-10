@@ -102,6 +102,9 @@ export default function Navbar({ cantidad, categorias, categoriaActiva, onElegir
               </ul>
             </li>
             <li className="nav-item">
+              <NavLink className={claseEnlace} to="/administrar">Administrar</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className={claseEnlace} to="/contacto">Contacto</NavLink>
             </li>
             <li className="nav-item d-none d-lg-block">
