@@ -1,5 +1,5 @@
 /* ============================================
-   Kivo — Punto de entrada de React (Semana 8)
+   Kivo — Punto de entrada de React (EFT Semana 9)
    Carga Bootstrap desde npm (no por CDN), luego
    los estilos propios de Kivo y monta el
    componente principal App dentro de #root.

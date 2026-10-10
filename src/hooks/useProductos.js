@@ -1,5 +1,5 @@
 /* ============================================
-   useProductos — Hook personalizado (Semana 8)
+   useProductos — Hook personalizado (EFT Semana 9)
    Carga el catálogo desde una fuente externa:
    el archivo public/data/productos.json, pedido
    con fetch como si fuera la API de un backend.

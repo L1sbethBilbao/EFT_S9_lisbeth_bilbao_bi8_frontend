@@ -1,5 +1,5 @@
 /* ============================================
-   Kivo — Componente principal App (Semana 8)
+   Kivo — Componente principal App (EFT Semana 9)
    Aquí vive el estado compartido de la tienda (useState):
    el carrito, el texto de búsqueda y la categoría.
    El catálogo llega desde useProductos (useEffect + fetch).
@@ -18,9 +18,9 @@ import CarritoPage from './pages/CarritoPage.jsx'
 import ContactoPage from './pages/ContactoPage.jsx'
 import NoEncontradaPage from './pages/NoEncontradaPage.jsx'
 
-// Clave propia de la semana 8: el sitio de la semana 7 vive en el mismo dominio
+// Clave propia de la EFT: los sitios de las semanas 7 y 8 viven en el mismo dominio
 // (l1sbethbilbao.github.io) y no deben compartir el carrito guardado.
-const CLAVE_CARRITO = 'kivoCarritoS8'
+const CLAVE_CARRITO = 'kivoCarritoEFT'
 
 /**
  * Lee el carrito guardado en localStorage al abrir la página.
