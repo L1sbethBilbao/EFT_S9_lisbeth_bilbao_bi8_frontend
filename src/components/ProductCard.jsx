@@ -10,6 +10,9 @@
 
 import { formatearPrecio, calcularDescuento } from '../utils/formato.js'
 
+// Imagen que se muestra si la del juego no carga (por ejemplo, una URL rota de un juego agregado).
+const IMAGEN_POR_DEFECTO = `${import.meta.env.BASE_URL}img/logo.png`
+
 export default function ProductCard({ juego, cantidadEnCarrito, onAgregar, vista = 'cuadricula' }) {
   const { nombre, precio, precioOferta, descripcion, imagen, categoriaNombre } = juego
   const descuento = calcularDescuento(precio, precioOferta)
@@ -19,7 +22,12 @@ export default function ProductCard({ juego, cantidadEnCarrito, onAgregar, vista
   return (
     <article className={`card h-100 kivo-card ${esLista ? 'flex-md-row tarjeta-lista' : ''}`}>
       <div className="position-relative">
-        <img className="card-img-top" src={imagen} alt={`Portada del juego ${nombre}`} />
+        <img
+          className="card-img-top"
+          src={imagen}
+          alt={`Portada del juego ${nombre}`}
+          onError={(evento) => { evento.currentTarget.src = IMAGEN_POR_DEFECTO }}
+        />
         {/* Renderizado condicional: la insignia solo aparece si hay descuento */}
         {descuento > 0 && (
           <span className="badge insignia-descuento position-absolute top-0 end-0 m-2">-{descuento}%</span>

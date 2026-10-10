@@ -408,6 +408,13 @@ a:hover {
   border-color: var(--color-acento);
 }
 
+/* Vista previa de la imagen en el formulario de videojuegos */
+.vista-previa-juego {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+}
+
 /* --- Footer --- */
 .site-footer {
   background-color: var(--color-nav);
