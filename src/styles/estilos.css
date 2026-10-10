@@ -422,6 +422,26 @@ a:hover {
   border-color: var(--color-borde);
 }
 
+/* CSS Grid: cada juego se ordena en 3 columnas
+   (miniatura de 64px | nombre y precio | botón Eliminar). */
+.lista-admin .item-admin {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* En pantallas muy angostas el botón Eliminar baja a una segunda fila, a todo el ancho */
+@media (max-width: 400px) {
+  .lista-admin .item-admin {
+    grid-template-columns: 64px 1fr;
+  }
+
+  .lista-admin .item-admin .btn {
+    grid-column: 1 / -1;
+  }
+}
+
 .lista-admin .nombre-admin {
   color: var(--color-texto);
 }
@@ -430,7 +450,6 @@ a:hover {
   width: 64px;
   height: 64px;
   object-fit: cover;
-  flex-shrink: 0;
 }
 
 /* --- Footer --- */

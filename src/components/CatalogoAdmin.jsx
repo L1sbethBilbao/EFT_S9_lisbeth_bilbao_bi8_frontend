@@ -43,14 +43,14 @@ export default function CatalogoAdmin({ juegos, hayCambios, onRestaurar, onElimi
       ) : (
         <ul className="list-group lista-admin mb-3">
           {juegos.map((juego) => (
-            <li key={juego.id} className="list-group-item d-flex align-items-center gap-3">
+            <li key={juego.id} className="list-group-item item-admin">
               <img
                 className="miniatura-admin rounded"
                 src={juego.imagen}
                 alt={`Portada del juego ${juego.nombre}`}
                 onError={(evento) => { evento.currentTarget.src = IMAGEN_POR_DEFECTO }}
               />
-              <div className="flex-grow-1">
+              <div>
                 <p className="fw-bold mb-0 nombre-admin">{juego.nombre}</p>
                 <p className="small mb-0">{juego.categoriaNombre} · {formatearPrecio(juego.precioOferta)}</p>
               </div>
