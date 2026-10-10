@@ -157,7 +157,9 @@ a:hover {
   }
 }
 
+/* bottom: 3rem deja el texto sobre los puntos del carrusel, sin taparlos */
 .carousel-caption {
+  bottom: 3rem;
   background-color: rgba(15, 19, 26, 0.65);
   border-radius: 6px;
   padding: 0.4rem 0.8rem;
