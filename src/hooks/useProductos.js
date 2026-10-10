@@ -187,9 +187,15 @@ export default function useProductos() {
     console.log(`[useProductos] Juego eliminado: id ${id}`)
   }
 
-  /** Borra los cambios y vuelve al catálogo original de productos.json. */
+  /**
+   * Borra los cambios y vuelve al catálogo original de productos.json.
+   * Devuelve los ids de los juegos agregados que dejan de existir,
+   * para que App también los quite del carrito.
+   */
   const restaurarCatalogo = () => {
+    const idsAgregados = cambios.agregados.map((juego) => juego.id)
     setCambios(SIN_CAMBIOS)
+    return idsAgregados
   }
 
   return {

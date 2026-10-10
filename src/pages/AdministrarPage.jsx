@@ -1,7 +1,7 @@
 /* ============================================
    AdministrarPage — Ruta "/administrar"
-   Permite agregar videojuegos al catálogo y ver
-   la lista actual. Recibe por props los datos y
+   Permite agregar y eliminar videojuegos del catálogo
+   y ver la lista actual. Recibe por props los datos y
    las funciones del hook useProductos desde App.
    Renderizado condicional:
    - cargando o error: EstadoCarga.
@@ -19,6 +19,7 @@ export default function AdministrarPage({
   productos,
   categorias,
   onAgregarJuego,
+  onEliminarJuego,
   hayCambios,
   onRestaurar,
 }) {
@@ -36,7 +37,12 @@ export default function AdministrarPage({
           <div className="col-12 col-lg-5">
             <section className="content-box p-3 p-md-4" aria-labelledby="lista-admin-titulo">
               <h2 id="lista-admin-titulo">Juegos en el catálogo</h2>
-              <CatalogoAdmin juegos={productos} hayCambios={hayCambios} onRestaurar={onRestaurar} />
+              <CatalogoAdmin
+                juegos={productos}
+                hayCambios={hayCambios}
+                onRestaurar={onRestaurar}
+                onEliminar={onEliminarJuego}
+              />
             </section>
           </div>
         </div>

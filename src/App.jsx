@@ -38,7 +38,7 @@ function leerCarritoGuardado() {
 
 export default function App() {
   // Catálogo cargado desde public/data/productos.json (ver hooks/useProductos.js),
-  // con las funciones para agregar juegos y volver al catálogo original.
+  // con las funciones para agregar y eliminar juegos y volver al catálogo original.
   const {
     productos,
     categorias,
@@ -46,6 +46,7 @@ export default function App() {
     error,
     reintentar,
     agregarJuego,
+    eliminarJuego,
     restaurarCatalogo,
     hayCambios,
   } = useProductos()
@@ -106,6 +107,24 @@ export default function App() {
   /** Deja el carrito vacío. */
   const vaciarCarrito = () => {
     setCarrito([])
+  }
+
+  /**
+   * Elimina un juego del catálogo.
+   * Si estaba en el carrito, también se quita de ahí para no cobrar un juego que ya no existe.
+   */
+  const eliminarDelCatalogo = (id) => {
+    eliminarJuego(id)
+    quitarDelCarrito(id)
+  }
+
+  /**
+   * Vuelve al catálogo original y quita del carrito
+   * los juegos agregados que dejan de existir.
+   */
+  const restaurarCatalogoYCarrito = () => {
+    const idsQuitados = restaurarCatalogo()
+    setCarrito((prev) => prev.filter((item) => !idsQuitados.includes(item.id)))
   }
 
   /** Limpia la búsqueda y la categoría para volver a ver todo el catálogo. */
@@ -174,8 +193,9 @@ export default function App() {
               productos={productos}
               categorias={categorias}
               onAgregarJuego={agregarJuego}
+              onEliminarJuego={eliminarDelCatalogo}
               hayCambios={hayCambios}
-              onRestaurar={restaurarCatalogo}
+              onRestaurar={restaurarCatalogoYCarrito}
             />
           }
         />

@@ -4,7 +4,9 @@
    - juegos: catálogo actual (originales + agregados).
    - hayCambios: true si el catálogo difiere del original.
    - onRestaurar: vuelve al catálogo de productos.json.
-   Muestra cada juego con su miniatura, categoría y precio.
+   - onEliminar: función que recibe el id del juego a eliminar.
+   Muestra cada juego con su miniatura, categoría, precio
+   y un botón Eliminar que pide confirmación.
    ============================================ */
 
 import { formatearPrecio } from '../utils/formato.js'
@@ -12,8 +14,15 @@ import { formatearPrecio } from '../utils/formato.js'
 // Imagen que se muestra si la del juego no carga.
 const IMAGEN_POR_DEFECTO = `${import.meta.env.BASE_URL}img/logo.png`
 
-export default function CatalogoAdmin({ juegos, hayCambios, onRestaurar }) {
+export default function CatalogoAdmin({ juegos, hayCambios, onRestaurar, onEliminar }) {
   const textoJuegos = juegos.length === 1 ? 'juego' : 'juegos'
+
+  /** onClick de Eliminar: pide confirmación y envía el id a la función de App. */
+  const confirmarEliminar = (juego) => {
+    if (window.confirm(`¿Eliminar "${juego.nombre}" del catálogo? También se quitará del carrito.`)) {
+      onEliminar(juego.id)
+    }
+  }
 
   /** Pide confirmación antes de borrar los cambios del catálogo. */
   const confirmarRestaurar = () => {
@@ -45,6 +54,14 @@ export default function CatalogoAdmin({ juegos, hayCambios, onRestaurar }) {
                 <p className="fw-bold mb-0 nombre-admin">{juego.nombre}</p>
                 <p className="small mb-0">{juego.categoriaNombre} · {formatearPrecio(juego.precioOferta)}</p>
               </div>
+              <button
+                type="button"
+                className="btn btn-quitar btn-sm"
+                onClick={() => confirmarEliminar(juego)}
+                aria-label={`Eliminar ${juego.nombre} del catálogo`}
+              >
+                Eliminar
+              </button>
             </li>
           ))}
         </ul>
