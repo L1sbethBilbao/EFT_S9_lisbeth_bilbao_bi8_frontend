@@ -59,7 +59,7 @@ export default function Hero({ destacados }) {
           <div className="carousel-inner rounded">
             <div className="carousel-item active">
               <img src={RUTA_BANNER} className="d-block w-100" alt="Banner de Kivo: el zorro con un control de videojuegos" />
-              <div className="carousel-caption">
+              <div className="carousel-caption caption-banner">
                 <p className="mb-0">Kivo: juegos para todas las consolas.</p>
               </div>
             </div>

@@ -165,6 +165,20 @@ a:hover {
   padding: 0.4rem 0.8rem;
 }
 
+/* El banner ya trae su frase dibujada abajo: su texto va arriba, centrado
+   y en una línea, para no tapar la frase ni las letras de "KIVO" */
+.carousel-caption.caption-banner {
+  top: 0.5rem;
+  bottom: auto;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 90%;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.9rem;
+}
+
 .carousel-indicators [data-bs-target] {
   width: 10px;
   height: 10px;

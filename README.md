@@ -39,7 +39,7 @@ El proyecto parte de la tienda Kivo de la semana 8 y agrega:
 | Cambios que no se pierden | Los juegos agregados y eliminados se guardan en `localStorage` |
 | CSS Grid propio | La lista de administración se ordena en 3 columnas con `display: grid` |
 | Flexbox propio | Las líneas del carrito, sus botones y el total se ordenan con `display: flex` |
-| Correcciones | Texto del carrusel que tapaba los puntos de navegación y error del carrusel al salir de la portada |
+| Correcciones | Textos del carrusel que tapaban los puntos de navegación y la frase del banner, y error del carrusel al salir de la portada |
 
 ## Tecnologías
 
@@ -321,6 +321,7 @@ Errores encontrados y corregidos durante las pruebas:
 |---|---|
 | El texto del carrusel tapaba los puntos de navegación | `.carousel-caption` con `bottom: 3rem` |
 | Al salir de la portada justo durante un cambio de imagen del carrusel aparecía el error *"Illegal invocation"* en la consola (Chrome y Edge) | En el cleanup de `Hero.jsx` se termina la transición y se detiene el avance automático antes de `dispose()` |
+| En el banner, el texto del carrusel tapaba la frase "El juego encuentra su lugar." que trae la imagen (sobre todo en celular) | `.caption-banner`: en el banner el texto va arriba, centrado y en una línea |
 
 ## Cumplimiento de la pauta EFT
 
